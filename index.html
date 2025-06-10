@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Torte di Sara - Dolci da asporto e a domicilio</title>
+  <title>Torte di Sara</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,17 +12,10 @@
       color: #5a3e1b;
     }
     header {
-      background: #925e40;
+      background: #d67f4e;
       color: white;
       padding: 1.5rem 2rem;
       text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      margin: 0;
-      font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: 2px;
     }
     nav {
       margin-top: 0.5rem;
@@ -32,26 +25,27 @@
       text-decoration: none;
       margin: 0 1rem;
       font-weight: 600;
-      transition: color 0.3s;
     }
-    nav a:hover {
-      color: #ffdbb5;
+    .lang-switch {
+      margin-top: 10px;
+    }
+    .lang-switch button {
+      margin: 0 0.3rem;
+      padding: 5px 10px;
+      background: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
     main {
       max-width: 1000px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-    section {
-      margin-bottom: 3rem;
-    }
     h2 {
       border-bottom: 2px solid #d67f4e;
       padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
     }
-    /* Prodotti */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
@@ -60,14 +54,8 @@
     .product-card {
       background: white;
       border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s;
-    }
-    .product-card:hover {
-      transform: scale(1.05);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     }
     .product-card img {
       width: 100%;
@@ -76,187 +64,135 @@
     }
     .product-content {
       padding: 1rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .product-content h3 {
-      margin: 0 0 0.5rem 0;
-      color: #a85217;
-    }
-    .product-content p {
-      flex-grow: 1;
-      font-size: 0.9rem;
-      margin-bottom: 0.8rem;
     }
     .price {
-      font-weight: 700;
       color: #d67f4e;
-      font-size: 1.1rem;
+      font-weight: 700;
     }
-    /* Form ordini */
-    form {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    label {
-      display: block;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1.5px solid #d67f4e;
-      border-radius: 5px;
-      font-size: 1rem;
-      font-family: inherit;
-      resize: vertical;
-    }
-    button {
+    .contact-links a {
+      display: inline-block;
+      margin: 10px 10px 10px 0;
+      text-decoration: none;
       background: #d67f4e;
       color: white;
-      border: none;
-      padding: 0.8rem 1.2rem;
-      font-size: 1.1rem;
-      font-weight: 700;
+      padding: 0.5rem 1rem;
       border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
     }
-    button:hover {
-      background: #a85217;
-    }
-    /* Footer */
     footer {
       background: #d67f4e;
       color: white;
       text-align: center;
       padding: 1rem;
-      font-size: 0.9rem;
     }
-    /* Responsive */
-    @media(max-width: 600px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
-      nav a {
-        margin: 0 0.5rem;
-        font-size: 0.9rem;
-      }
-    }
+    .hidden { display: none; }
+    img.qr { width: 150px; margin-top: 10px; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Torte di Sara</h1>
+    <h1 data-i18n="title">Torte di Sara</h1>
     <nav>
-      <a href="#prodotti">Prodotti</a>
-      <a href="#ordina">Ordina</a>
-      <a href="#contatti">Contatti</a>
+      <a href="#prodotti" data-i18n="nav_products">Prodotti</a>
+      <a href="#contatti" data-i18n="nav_contact">Contatti</a>
     </nav>
+    <div class="lang-switch">
+      <button onclick="setLang('it')">🇮🇹 Italiano</button>
+      <button onclick="setLang('zh')">🇹🇼 中文</button>
+    </div>
   </header>
 
   <main>
     <section id="intro">
-      <h2>Benvenuti a Torte di Sara</h2>
-      <p>Deliziose torte fatte a mano con ingredienti freschi e di qualità. Ordina da asporto o consegna a domicilio per ogni occasione speciale.</p>
+      <h2 data-i18n="welcome">Benvenuti a Torte di Sara</h2>
+      <p data-i18n="intro_text">
+        Deliziose torte fatte a mano con ingredienti freschi. Ordina da asporto o a domicilio.
+      </p>
     </section>
 
     <section id="prodotti">
-      <h2>I nostri prodotti</h2>
+      <h2 data-i18n="products">I nostri prodotti</h2>
       <div class="products">
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=60" alt="Torta al cioccolato" />
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=60" alt="Chocolate Cake">
           <div class="product-content">
-            <h3>Torta al cioccolato</h3>
-            <p>Ricca e morbida torta al cioccolato fondente, decorata con ganache.</p>
-            <div class="price">€20,00</div>
+            <h3 data-i18n="cake1">Torta al cioccolato</h3>
+            <p data-i18n="cake1_desc">Ricca e soffice, decorata con ganache fondente.</p>
+            <p class="price">€20</p>
           </div>
         </div>
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1505253210343-cd7c28aa3d8d?auto=format&fit=crop&w=500&q=60" alt="Cheesecake alle fragole" />
+          <img src="https://images.unsplash.com/photo-1505253210343-cd7c28aa3d8d?auto=format&fit=crop&w=500&q=60" alt="Cheesecake">
           <div class="product-content">
-            <h3>Cheesecake alle fragole</h3>
-            <p>Cremosa cheesecake con base croccante e topping di fragole fresche.</p>
-            <div class="price">€25,00</div>
-          </div>
-        </div>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1562440499-7a51b88d00e0?auto=format&fit=crop&w=500&q=60" alt="Torta alla vaniglia" />
-          <div class="product-content">
-            <h3>Torta alla vaniglia</h3>
-            <p>Delicata torta alla vaniglia con crema al burro e decorazioni floreali.</p>
-            <div class="price">€22,00</div>
-          </div>
-        </div>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=500&q=60" alt="Torta alla frutta" />
-          <div class="product-content">
-            <h3>Torta alla frutta</h3>
-            <p>Torta fresca con base soffice e frutta di stagione colorata.</p>
-            <div class="price">€23,00</div>
+            <h3 data-i18n="cake2">Cheesecake alle fragole</h3>
+            <p data-i18n="cake2_desc">Base croccante, crema vellutata e fragole fresche.</p>
+            <p class="price">€25</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="ordina">
-      <h2>Ordina la tua torta</h2>
-      <form id="orderForm" action="mailto:tortedisara@example.com" method="POST" enctype="text/plain">
-        <label for="nome">Nome completo:</label>
-        <input type="text" id="nome" name="nome" required />
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-
-        <label for="telefono">Telefono:</label>
-        <input type="tel" id="telefono" name="telefono" required />
-
-        <label for="prodotto">Seleziona la torta:</label>
-        <select id="prodotto" name="prodotto" required>
-          <option value="" disabled selected>-- Scegli una torta --</option>
-          <option value="Torta al cioccolato">Torta al cioccolato</option>
-          <option value="Cheesecake alle fragole">Cheesecake alle fragole</option>
-          <option value="Torta alla vaniglia">Torta alla vaniglia</option>
-          <option value="Torta alla frutta">Torta alla frutta</option>
-        </select>
-
-        <label for="quantita">Quantità:</label>
-        <input type="number" id="quantita" name="quantita" min="1" max="10" value="1" required />
-
-        <label>Tipo di consegna:</label>
-        <input type="radio" id="asporto" name="consegna" value="Asporto" required />
-        <label for="asporto" style="display:inline;">Asporto</label>
-        <input type="radio" id="domicilio" name="consegna" value="Domicilio" required />
-        <label for="domicilio" style="display:inline;">Domicilio</label>
-
-        <label for="indirizzo">Indirizzo di consegna (se domicilio):</label>
-        <textarea id="indirizzo" name="indirizzo" rows="3" placeholder="Via, Numero, CAP, Città"></textarea>
-
-        <button type="submit">Invia ordine</button>
-      </form>
-    </section>
-
     <section id="contatti">
-      <h2>Contattaci</h2>
-      <p>Per informazioni o richieste speciali, scrivici o chiamaci:</p>
-      <ul>
-        <li>Email: <a href="mailto:info@tortedisara.it">info@tortedisara.it</a></li>
-        <li>Telefono: <a href="tel:+390123456789">+39 012 345 6789</a></li>
-        <li>Indirizzo: Via Dolci, 12 - Milano, Italia</li>
-      </ul>
+      <h2 data-i18n="contact">Contattaci</h2>
+      <p data-i18n="contact_text">
+        Puoi contattarci per ordini via WhatsApp o Line.
+      </p>
+      <div class="contact-links">
+        <a href="https://wa.me/393401234567" target="_blank">📱 WhatsApp</a>
+        <a href="https://line.me/R/ti/p/@tortedisara" target="_blank">💬 Line</a>
+        <br>
+        <img class="qr" src="https://qr-official.line.me/sid/L/123abc456xyz.png" alt="LINE QR Code">
+      </div>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 Torte di Sara - Tutti i diritti riservati
+    <p>&copy; 2025 Torte di Sara</p>
   </footer>
+
+  <script>
+    const translations = {
+      it: {
+        title: "Torte di Sara",
+        nav_products: "Prodotti",
+        nav_contact: "Contatti",
+        welcome: "Benvenuti a Torte di Sara",
+        intro_text: "Deliziose torte fatte a mano con ingredienti freschi. Ordina da asporto o a domicilio.",
+        products: "I nostri prodotti",
+        cake1: "Torta al cioccolato",
+        cake1_desc: "Ricca e soffice, decorata con ganache fondente.",
+        cake2: "Cheesecake alle fragole",
+        cake2_desc: "Base croccante, crema vellutata e fragole fresche.",
+        contact: "Contattaci",
+        contact_text: "Puoi contattarci per ordini via WhatsApp o Line."
+      },
+      zh: {
+        title: "莎拉的蛋糕",
+        nav_products: "產品",
+        nav_contact: "聯絡我們",
+        welcome: "歡迎來到莎拉的蛋糕",
+        intro_text: "使用新鮮食材手工製作的美味蛋糕。可外帶或宅配服務。",
+        products: "我們的產品",
+        cake1: "巧克力蛋糕",
+        cake1_desc: "濃郁蓬鬆，搭配甘納許裝飾。",
+        cake2: "草莓起司蛋糕",
+        cake2_desc: "香脆底層、絲滑奶油與新鮮草莓。",
+        contact: "聯絡我們",
+        contact_text: "可透過 WhatsApp 或 LINE 下單與聯繫。"
+      }
+    };
+
+    function setLang(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      document.documentElement.lang = lang;
+    }
+
+    // default language
+    setLang('it');
+  </script>
 </body>
 </html>
